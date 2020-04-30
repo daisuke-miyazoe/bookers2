@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers4</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+  <header class="navbar" style="background-color: black;">
+  <div class="container">
+    <nav class="nav">
+      <span>Bookers3</span>
+    </nav>
+    <div class="nav" id="slidemenu">
+        <ul class="nav1">
+          <% if user_signed_in? %>
+            <li class="nav2 glyphicon glyphicon-home">
+              <%= link_to "Home", user_path(current_user.id) %>
+            </li>
+            <li class="nav2 glyphicon glyphicon-user">
+              <%= link_to 'Users', users_path %>
+            </li>
+            <li class="nav2 glyphicon glyphicon-book">
+              <%= link_to 'Books', books_path %>
+            </li>
+            <li class="nav2 glyphicon glyphicon-log-out">
+              <%= link_to "logout", destroy_user_session_path, method: :delete %>
+            </li>
+          <% else %>
+            <li class="nav2 glyphicon glyphicon-home">
+              <%= link_to "Home", root_path %>
+            </li>
+            <li class="nav2 glyphicon glyphicon-link">
+              <%= link_to "About", home_about_path %>
+            </li>
+            <li class="nav2 glyphicon glyphicon-edit">
+              <%= link_to "sign up", new_user_registration_path %>
+            </li>
+            <li class="nav2 glyphicon glyphicon-log-in">
+              <%= link_to "login", new_user_session_path %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+  </div>
+</header>
+
+    <%= yield %>
+  </body>
+</html>
