@@ -1,17 +1,26 @@
 <%= render 'layouts/error_messages', model: @book %>
 
-<h1>Editing Book</h1>
-<%= form_for(@book) do |f| %>
-    
+<div class="container">
+    <div class="edit">
+        <h1>Editing Book</h1>
+        <%= form_for(@book) do |f| %>
+            
+            <div class="field">
+            <h4>Title</h4>
+            <%= f.text_field :title, class: "book_new", class: "book_edit" %>
+            </div>
 
-    <h4>Title</h4>
-    <%= f.text_field :title %>
+            <div class="field">
+            <h4>Opinion<h4>
+            <%= f.text_area :body, class: "book_new", class: "book_edit" %><br>
+            </div>
 
-    <h4>Opinion<h4>
-    <%= f.text_field :body %><br>
-
-    <%= f.submit 'Update Book' %><br>
-    <%= link_to "Show", book_path(@book.id) %> |
-    <%= link_to "Back", books_path %>
-    
-<% end %>
+            <div class="field">
+            <%= f.submit 'Update Book', class: "btn btn-info" %><br>
+            </div>
+            <%= link_to "Show", book_path(@book.id) %> |
+            <%= link_to "Back", books_path %>
+            
+        <% end %>
+    </div>
+</div>
